@@ -2,14 +2,15 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](Images/diagram_filename.png)
+![Clara Lin - week 12-Page-2](https://user-images.githubusercontent.com/95038447/163505894-9a08ac91-d75d-4009-8f8b-eabcc54798a4.jpg)
 
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the _____ file may be used to install only certain pieces of it, such as Filebeat.
+
+These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook (.yml) file may be used to install only certain pieces of it, such as Filebeat.
 
   - _TODO: Enter the playbook file._
 
 This document contains the following details:
-- Description of the Topologu
+- Description of the Topology
 - Access Policies
 - ELK Configuration
   - Beats in Use
@@ -31,12 +32,13 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     | Function | IP Address | Operating System |
-|----------|----------|------------|------------------|
-| Jump Box | Gateway  | 10.0.0.1   | Linux            |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
-| TODO     |          |            |                  |
+| Name        | Function                   | IP Address | Operating System |
+|-------------|----------------------------|------------|------------------|
+| JumpBoxPro2 | Gateway                    | 10.1.0.5   | Linux            |
+| Web1        | Web Server - Docker - DVWA | 10.1.0.6   |                  |
+| Web2        | Web Server - Docker - DVWA | 10.1.0.7   |                  |
+| Web3-2      | Web Server - Docker - DVWA | 10.1.0.8   |                  |
+| ELK-VM1     | Peering                    | 10.3.0.6   |                  |
 
 ### Access Policies
 
@@ -68,7 +70,8 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-![TODO: Update the path with the name of your screenshot of docker ps output](Images/docker_ps_output.png)
+![sebp](https://user-images.githubusercontent.com/95038447/163506115-91cc3079-7e3b-484c-ae90-f24ec4b2c4b6.png)
+
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
