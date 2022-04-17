@@ -2,12 +2,9 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Clara Lin - week 12-Page-2](https://user-images.githubusercontent.com/95038447/163505894-9a08ac91-d75d-4009-8f8b-eabcc54798a4.jpg)
-
+![Clara Lin - week 12-Page-2 (1)](https://user-images.githubusercontent.com/95038447/163695718-e923b75c-0004-40a8-a211-9a803a65504a.jpg)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook (.yml) file may be used to install only certain pieces of it, such as Filebeat.
-
-  - _TODO: Enter the playbook file._
 
 This document contains the following details:
 - Description of the Topology
@@ -50,14 +47,14 @@ A summary of the access policies in place can be found in the table below.
 | Name        | Publicly Accessible    | Allowed IP Addresses    |
 |-------------|------------------------|-------------------------|
 | JumpBoxPro2 | No                     | Personal IP Address     |
-| Web1        | Yes - through Jump Box | JumpBox IP 20.92.78.255 |
-| Web2        | Yes - through Jump Box | JumpBox IP 20.92.78.255 |
-| Web3-2      | Yes - through Jump Box | JumpBox IP 20.92.78.255 |
-| ELK-VM1     | Yes - through Jump Box | JumpBox IP 20.92.78.255 |
+| Web1        | Yes - through LB       | LB IP 20.213.126.194  |
+| Web2        | Yes - through LB       | LB IP 20.213.126.194   |
+| Web3-2      | Yes - through LB       | LB IP 20.213.126.194   |
+| ELK-VM1     | No                     |  |
 
 ### Elk Configuration
 
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it ensures that the configuration is executed without the potential of human error.
+Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because it ensures that we can deploy all the machines at once with the configuration without worrying about human error.
 
 The playbook implements the following tasks:
 - increases the max memory amount of the VM to 262144
@@ -73,28 +70,37 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- 10.1.0.6
-- 10.1.0.7
-- 10.1.0.8
+- Web1 (10.1.0.6)
+- Web2 (10.1.0.7)
+- Web3 (10.1.0.8)
 
 We have installed the following Beats on these machines:
 - Filebeat
 - Metricbeat
 
 These Beats allow us to collect the following information from each machine:
-- _TODO: In 1-2 sentences, explain what kind of data each beat collects, and provide 1 example of what you expect to see. E.g., `Winlogbeat` collects Windows logs, which we use to track user logon events, etc._
+- Filebeat helps with collecting data from the system. On the dashboard, one can expect to see syslog events, as well as hostnames and processes. 
+- Metricbeat helps with collecting machine metrics. It overlooks the server and gives statistics on CPU usage, memory, file system, and IO services. 
 
 ### Using the Playbook
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
-- Update the _____ file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Copy the filebeat-config.yml and metricbeat-config.yml file to /etc/ansible/files.
+- Update the files to include the ELK-VM1's Private IP address
+- Run the playbook, and navigate to http://[ELK-VM1 Public IP]:5601/app/kibana to check that the installation worked as expected.
 
-_TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+
+#### What commands to use?
+
+ssh azdmin2@20.92.78.255
+sudo su
+docker start gracious_newton 
+docker attach gracious_newton
+cd /etc/ansible
+ansible-playbook elk-playbook.yml
+cd /etc/ansible/files
+ansible-playbook filebeat-playbook.yml
+ansible-playbook metricbeat-playbook.yml
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
