@@ -93,14 +93,14 @@ SSH into the control node and follow the steps below:
 
 #### What commands to use?
 
-ssh azdmin2@20.92.78.255
-sudo su
-docker start gracious_newton 
-docker attach gracious_newton
-cd /etc/ansible
-ansible-playbook elk-playbook.yml
-cd /etc/ansible/files
-ansible-playbook filebeat-playbook.yml
-ansible-playbook metricbeat-playbook.yml
+- ssh azdmin2@20.92.78.255
+- sudo su
+- docker start gracious_newton 
+- docker attach gracious_newton
+- cd /etc/ansible
+- ansible-playbook elk-playbook.yml
+- cd /etc/ansible/files
+- ansible-playbook filebeat-playbook.yml
+- ansible-playbook metricbeat-playbook.yml
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
