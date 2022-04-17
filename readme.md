@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Clara Lin - week 12-Page-2 (1)](https://user-images.githubusercontent.com/95038447/163695718-e923b75c-0004-40a8-a211-9a803a65504a.jpg)
+![Clara Lin - week 12-Page-2 (2)](https://user-images.githubusercontent.com/95038447/163696523-c4bd4511-8d0d-4f37-9fc0-c215b5a8bcdb.jpg)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the playbook (.yml) file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -44,13 +44,13 @@ Machines within the network can only be accessed by SSH from the Jump Box.
 
 A summary of the access policies in place can be found in the table below.
 
-| Name        | Publicly Accessible    | Allowed IP Addresses    |
-|-------------|------------------------|-------------------------|
-| JumpBoxPro2 | No                     | Personal IP Address     |
-| Web1        | Yes - through LB       | LB IP 20.213.126.194  |
-| Web2        | Yes - through LB       | LB IP 20.213.126.194   |
-| Web3-2      | Yes - through LB       | LB IP 20.213.126.194   |
-| ELK-VM1     | No                     |  |
+| Name        | Publicly Accessible    | Allowed IP Addresses                                   |
+|-------------|------------------------|--------------------------------------------------------|
+| JumpBoxPro2 | No                     | Personal IP Address                                    |
+| Web1        | Yes                    | LB IP 20.213.126.194 / JumpBox IP 20.92.78.255         |
+| Web2        | Yes                    | LB IP 20.213.126.194 / JumpBox IP 20.92.78.255         |
+| Web3-2      | Yes                    | LB IP 20.213.126.194 / JumpBox IP 20.92.78.255         |
+| ELK-VM1     | No                     | JumpBox IP 20.92.78.255 / HTTP Port 5601 / Personal IP |
 
 ### Elk Configuration
 
